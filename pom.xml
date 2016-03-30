@@ -50,7 +50,7 @@
 
                     <archive>
                         <manifest>
-                            <mainClass>org.academiadecodigo.bootcamp.mike.</mainClass>
+                            <mainClass>org.academiadecodigo.bootcamp.mike.balls.Main</mainClass>
                         </manifest>
                     </archive>
 
