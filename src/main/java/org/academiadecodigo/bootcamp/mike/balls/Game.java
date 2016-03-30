@@ -136,7 +136,7 @@ public final class Game {
         int totalBalls = balls.length + 1;
 
         if (gameType == 1) {
-            while (!balls[0].isDestroyed()) {
+            while (!balls[0].isDestroyed() || totalBalls > 2 ) {
                 Thread.sleep(delay);
                 for (Ball b1 : balls) {
                     b1.move();
