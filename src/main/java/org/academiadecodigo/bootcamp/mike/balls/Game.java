@@ -136,34 +136,14 @@ public final class Game {
         int totalBalls = balls.length + 1;
 
         if (gameType == 1) {
-            while (!balls[0].isDestroyed()) {
+            while (!balls[0].isDestroyed() && totalBalls > 2 ) {
                 Thread.sleep(delay);
-                for (Ball b1 : balls) {
-                    b1.move();
-                    for (Ball b2 : balls) {
-                        if (b1 == b2) {
-                            continue;
-                        }
-                        if (b1.checkCollision(b2)) {
-                            totalBalls -= 1;
-                        }
-                    }
-                }
+                checkCollisions(totalBalls);
             }
         } else if (gameType == 2) {
             while (totalBalls > 2) {
                 Thread.sleep(delay);
-                for (Ball b1 : balls) {
-                    b1.move();
-                    for (Ball b2 : balls) {
-                        if (b1 == b2) {
-                            continue;
-                        }
-                        if (b1.checkCollision(b2)) {
-                            totalBalls -= 1;
-                        }
-                    }
-                }
+                checkCollisions(totalBalls);
             }
         }
 
@@ -183,5 +163,19 @@ public final class Game {
 
         newGame();
 
+    }
+
+    private void checkCollisions(int totalBalls) {
+        for (Ball b1 : balls) {
+            b1.move();
+            for (Ball b2 : balls) {
+                if (b1 == b2) {
+                    continue;
+                }
+                if (b1.checkCollision(b2)) {
+                    totalBalls -= 1;
+                }
+            }
+        }
     }
 }
